@@ -149,7 +149,7 @@ public class SamlSecurityRealmTest {
         SamlSecurityRealm samlSecurity = new SamlSecurityRealm(metadata, "displayName", "groups", 10000, "uid", "email", "/logout", null, null, null);
         jenkinsRule.jenkins.setSecurityRealm(samlSecurity);
         SamlSPMetadataWrapper samlSPMetadataWrapper = new SamlSPMetadataWrapper(samlSecurity.getSamlPluginConfig(), null, null);
-        HttpResponse process = samlSPMetadataWrapper.process();
+        HttpResponse process = samlSPMetadataWrapper.get();
         StaplerResponse mockResponse = Mockito.mock(StaplerResponse.class);
         StringWriter stringWriter = new StringWriter();
         when(mockResponse.getWriter()).thenReturn(new PrintWriter(stringWriter));
